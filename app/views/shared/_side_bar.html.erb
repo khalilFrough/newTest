@@ -1,0 +1,12 @@
+<div class="vertical-menu pt-3">
+  <nav>
+    <ul>
+      <li class=<%= 'active' if current_page?(my_profile_users_path) %> ><a href="/users/my_profile"><i class="fas fa-paper-plane"></i><span>My
+                                            Profile</span></a></li>
+      <li class=<%= 'active' if current_page?(my_posts_blogs_path) %> ><a href="/blogs/my_posts" class="active"><i class="fas fa-user"></i><span>My Posts</span></a></li>
+      <li class=<%= 'active' if current_page?(my_comments_comments_path) %> ><a href="/comments/my_comments"><i class="fas fa-comment-dots"></i><span>My Comments</span></a></li>
+      <li class=<%= 'active' if current_page?(comments_to_me_comments_path) %> ><a href="/comments/comments_to_me"><i class="fas fa-check-circle"></i><span>Comments to me</span></a></li>
+      <li class=<%= 'active' if current_page?(settings_users_path) %> ><a href="/users/settings"><i class="fas fa-cog"></i><span>Setting</span></a></li>
+    </ul>
+  </nav>
+</div>

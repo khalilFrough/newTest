@@ -1,0 +1,63 @@
+
+<div class="profile-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 offset-sm-4 mt-4 mb-2">
+        <div class="profile-card text-center">
+          <!--<img src="./images/avater.png" class="rounded-circle" alt="">-->
+          <%= image_tag user_avater(@user), class: 'rounded-circle', style: 'width: 120px' %>
+          <div class="author-meta">
+            <h4><%= @user.username %></h4>
+            <div class="date-time">
+              <ul>
+                <li><i class="far fa-clock"></i><span><%= @user.created_at.strftime("%d-%m-%Y") %></span></li>
+                <li><i class="fas fa-map-marker-alt"></i><span><%= @user.city %></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="post-and-comments">
+  <div class="container pc-bg">
+    <div class="row no-gutters">
+      <div class="col-sm-6">
+        <div class="recent-post-comment mr-3">
+          <div class="post-header">
+            <a href="#">Another</a>
+            <span>Recent Post:</span>
+          </div>
+          <ul class="post-list">
+            <% @blogs.each do |blog| %>
+                <li>
+                  <%=link_to blog.title.truncate(55), blog_path(blog)%> <span><%= blog.created_at.strftime("%d-%m-%Y") %></span></li>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="recent-post-comment">
+          <div class="post-header">
+            <a href="#">Another</a>
+            <span>Recent comment:</span>
+          </div>
+          <ul class="comment-list">
+            <% @comments.each do |comment| %>
+                <li><span><%= comment.created_at.strftime("%d-%m-%Y") %></span> <%= link_to comment.blog.title, blog_path(comment.blog) %> <span>comment:</span>
+                  <ul class="comments">
+                    <li>
+                      <%= comment.body %>
+                    </li>
+                  </ul>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

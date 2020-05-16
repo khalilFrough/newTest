@@ -1,0 +1,17 @@
+<div class="post-main pl-3 pr-3 mt-4 mb-5">
+  <div class="post-head mb-2">
+    <div class="row">
+      <div class="col-sm-12 pr-4">
+        <label class="sr-only" for="disabledInput">Topic</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text rounded-0 green-bar"></div>
+          </div>
+          <input class="form-control rounded-0" id="disabledInput" type="text" placeholder="Post"
+                 disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'form', blog: @blog %>
+</div>

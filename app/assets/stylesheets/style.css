@@ -1,0 +1,410 @@
+.login-btn {
+    background: #109452;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+}
+
+.login-btn:hover {
+    color: white !important;
+}
+
+.login-form {
+    background: white;
+    margin: auto;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+}
+
+.main {
+    background: #ecececad;
+    width: 100%;
+    height: 92vh;
+}
+
+.home-main {
+    background: #ecececad;
+    width: 100%;
+    /* height: 83vh; */
+}
+
+.register-link {
+    float: right;
+    margin: 0 14px 0 0;
+}
+
+.already-a-user-link {
+    float: right;
+    margin: 0 60px 0 0;
+}
+
+.footer {
+    background: black;
+    height: 8vh;
+}
+
+.avatar {
+    width: 38px;
+    border-radius: 30px;
+}
+
+.profile::after {
+    display: none;
+}
+
+.profile-nav {
+    left: -165px;
+    position: absolute;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.active-nav {
+    width: inherit;
+    height: 2px !important;
+    background: white;
+    position: relative;
+    display: block;
+    top: 2px;
+    left: -7px;
+}
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.post-button {
+    border: 0;
+    border-radius: 0;
+    background: white;
+    color: black;
+    margin: 0 0 0 2px !important;
+}
+
+.new-post-button {
+    border: 0;
+    border-radius: 0;
+    background: rgb(7, 128, 97);
+    color: white;
+    margin: 0 0 0 2px !important;
+}
+
+.btn:hover {
+    color: rgb(66, 66, 175);
+}
+
+.post-button-active {
+    color: red;
+}
+
+.post {
+    width: 100%;
+    border-radius: 0;
+}
+
+.post-avatar {
+    width: 70px;
+    /* padding: 15px; */
+}
+
+.input-title {
+    font-size: 14px;
+    width: 100px;
+}
+
+.card-title {
+    background: #f2f2f299;
+}
+
+.red-bar {
+    height: 24px;
+    width: 5px;
+    background: red;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.green-bar {
+    padding: 4px;
+    border: none;
+    background: #40888a;
+}
+
+.card-member-avater {
+    width: 60px;
+    height: 55px;
+    margin: 0 0 0 8px;
+}
+
+.member-name {
+    margin: -15px 0 0 7px;
+}
+
+.post-count {
+    position: relative;
+    bottom: 18px;
+    left: 8px;
+    width: 60px;
+    background: #21212159;
+    font-size: 12px;
+    text-align: center;
+    /* opacity: 0.6; */
+    color: white;
+}
+
+.topic {
+    border-radius: 10px;
+    padding: 0 15px 0 15px;
+    margin: 0 0 4px 4px;
+}
+
+.topic:hover {
+    color: #e83f25;
+    border: 1px solid red !important;
+    cursor: pointer;
+}
+
+.topic-link {
+    color: #202529 !important;
+    text-decoration: none;
+}
+
+.topic-link:hover {
+    color: #202529 !important;
+    text-decoration: none !important;
+}
+
+.topic-checkbox-input {
+    display: none;
+}
+
+.topics {
+    padding: 0 8px 0 20px;
+}
+
+/*input[type="checkbox"]:checked+label {*/
+/*    color: #e83f25;*/
+/*    border: 1px solid red !important;*/
+/*}*/
+
+.links {}
+
+.link {
+    color: black;
+    border: 1px solid #dee2e6;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #e83f25;
+    border: 1px solid red !important;
+    text-decoration: none;
+}
+
+.post-link {
+    color: #585757;
+    text-decoration: none;
+}
+
+.post-link:hover {
+    text-decoration: none;
+    color: #585757;
+}
+
+.date-time ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+.date-time ul li span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.pc-bg {
+    background: #dedede;
+    padding: 15px 10px 65px 10px;
+}
+
+.recent-post-comment {
+    background: #fff;
+    min-height: 250px;
+}
+
+.post-header {
+    background: #ebebeb;
+    padding: 15px;
+}
+
+ul.post-list {
+    margin-left: 15px;
+    padding: 0;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.post-list li {
+    list-style: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 14px;
+}
+
+.post-list li a {
+    color: #585757;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.post-list li span {
+    float: right;
+    padding-right: 15px;
+}
+
+ul.comment-list {
+    padding: 0;
+}
+
+.comment-list li {
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+ul.comments {
+    padding: 0;
+}
+
+ul.comments li {
+    background: #d6d6d6;
+    border-radius: 5px;
+    margin-top: 12px;
+    padding-left: 20px;
+}
+
+/*Dashboard*/
+.dashboard-wrapper {
+    background: #dedede
+}
+
+.vertical-menu {
+    background: #343a40;
+    height: 92vh;
+}
+
+.vertical-menu nav ul {
+    padding: 0;
+}
+
+.vertical-menu ul li {
+    list-style: none;
+}
+
+.vertical-menu nav ul li {
+    display: block;
+    position: relative;
+}
+
+.vertical-menu nav ul li.active:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #cadcd836;
+    position: absolute;
+    border-left: 5px solid #03a789;
+}
+
+.vertical-menu nav ul li a {
+    color: #dedede !important;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    display: block;
+    margin-left: 15px;
+}
+
+.vertical-menu nav ul li a span {
+    margin-left: 10px;
+}
+
+/*Dashboard Right*/
+.form-area {
+    background: #fff;
+    padding: 0 15px;
+}
+
+.form-tab ul {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.form-area .form-tab ul li {
+    margin-right: 30px;
+    display: inline-block;
+}
+
+.form-area .form-tab ul li a {
+    color: #000;
+    padding: 10px 0;
+    display: block;
+    text-decoration: none;
+}
+
+.form-area .form-tab ul li a.active {
+    color: #1dc7c0;
+    border-bottom: 3px solid #1dc7c0;
+}
+
+.tab-header {
+    background: #dedede;
+    padding: 20px 0 20px 70px;
+    margin-top: 20px;
+}
+
+.blog-post-header {
+    background: #dedede;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.tab-header p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.text-area-header p {
+    background: #dedede;
+    padding: 15px 15px;
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 0;
+    border: 1px solid #ababab;
+    font-size: 14px;
+}
+
+.text-area textarea {
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-file-upload span {
+    background: #dedede;
+    padding: 10px 18px;
+    border-radius: 5px;
+}

@@ -1,0 +1,31 @@
+<div class="row pl-4">
+  <a class="btn new-post-button" href="/blogs/new">New Post</a>
+</div>
+
+<div class="post-and-comments">
+  <div class="container pc-bg">
+    <div class="row no-gutters">
+      <div class="col-sm-12">
+        <div class="recent-post-comment mr-3">
+          <div class="post-header">
+            <a href="#">Another</a>
+            <span>Recent Post:</span>
+          </div>
+          <ul class="post-list">
+            <% @blogs.each do |blog| %>
+                <li>
+                  <%=link_to blog.title.truncate(55), blog_path(blog)%>
+                  <span>
+                  <%= blog.created_at.strftime("%d-%m-%Y") %>
+                    <%= link_to 'Show', blog %></td>
+                    <%= link_to 'Edit', edit_blog_path(blog) %></td>
+                    <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </span>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rmit</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <%= render 'shared/nav' if signed_in? %>
+
+    <%#= yield %>
+
+    <div class="dashboard-wrapper pt-3 pb-5">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-3">
+            <%= render 'shared/side_bar' %>
+          </div>
+          <div class="col-sm-9">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="footer">
+      <p class="text-white text-center m-0 pt-3">
+        Copyright@ 2020 | Powered by {{student name}} - {{student number}} | {{tutorial group}} | tutor name
+      </p>
+    </footer>
+  </body>
+</html>

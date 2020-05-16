@@ -1,0 +1,125 @@
+<div class="blog-show-wraper">
+  <div class="main-post">
+
+    <h3 class="ml-3">
+      <%= @blog.title %>
+    </h3>
+
+    <div class="m-3">
+      <span class="blog-topic">
+        <%= @blog.topic %>
+      </span>
+      <p class="float-right">
+        <i class="far fa-comment-dots"></i> <%= @blog.comments.count %> <i class="ml-4 far fa-eye"></i> <%= @blog.view_count.present? ? @blog.view_count : 0 %>
+      </p>
+    </div>
+
+    <div class="blog-post-header m-3">
+      <%= image_tag user_avater(@blog.user), class: 'rounded-circle avatar d-inline-block' %>
+      <p class="d-inline-block m-0 p-0">
+        <%= link_to @blog.user.username, user_path(@blog.user), class: 'pl-2', style: "color: #38b0ea" %>
+        <span class="pl-5">
+          <%= @blog.created_at.strftime("%Y-%m-%d %I:%M%p") %>
+        </span>
+      </p>
+    </div>
+
+    <p class="m-3">
+      <%= @blog.body %>
+    </p>
+
+    <div class="col-sm-12 pl-0">
+
+      <div class="form-area pt-3 pb-4">
+        <div class="form-tab">
+          <ul class="nav text-left">
+            <li>
+              <a class="active show comment-header">Comment</a>
+            </li>
+          </ul>
+
+          <div class="pt-4">
+            <%= form_with(model: @blog.comments.build, local: true) do |form| %>
+                <%= hidden_field_tag 'comment[blog_id]', @blog.id %>
+                <div class="col-sm-12 m-0 p-0">
+                  <%= form.text_area :body, class: "form-control rounded-0", rows:"5"%>
+                </div>
+                <div class="submit-btn mt-4">
+                  <button type="submit" class="btn rounded-0" style="background: #1fb0de; color: white; width: 100px;">Post</button>
+                </div>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="p-3 pr-4">
+      <div class="col-sm-12 mb-3" style="bottom: 14px">
+        <p class="float-right">
+          <%= @blog.comments.count %> comments
+        </p>
+      </div>
+
+      <% @blog.comments.each do |comment| %>
+          <hr>
+          <div class="row" style="margin-left: 0px">
+              <%= image_tag user_avater(comment.user), size: '40', class: 'rounded-circle' if comment.user.present?%>
+
+            <div class="col-sm-11">
+              <p>
+                <%= link_to comment.user.username, user_path(comment.user) if comment.user.present?%>
+                <a href="#" data-toggle="modal" data-attr="<%= comment.id %>" data-target="#exampleModal" class="comment-reply" data-whatever="@mdo">reply</a>
+              </p>
+              <p>
+                <%= comment.created_at %>
+              </p>
+            </div>
+          </div>
+          <div class="row" style="margin-left: 15px">
+            <p>
+              <%= comment.body %>
+            </p>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reply</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(model: @blog.comments.build, local: true, :html => {class: 'comment-reply-modal'}) do |form| %>
+            <%= hidden_field_tag 'comment[blog_id]', @blog.id %>
+            <%= hidden_field_tag 'comment[comment_id]'%>
+            <div class="col-sm-12 m-0 p-0">
+              <%= form.text_area :body, class: "form-control rounded-0", rows:"5"%>
+            </div>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn rounded-0 comment-reply-btn" style="background: #1fb0de; color: white; width: 100px;">Reply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $(".comment-reply").click(function () {
+        var val = $(this).data().attr;
+        $("#comment_comment_id").val(val);
+    })
+
+    $(".comment-reply-btn").click(function () {
+        $('.comment-reply-modal').submit();
+    })
+</script>

@@ -1,0 +1,181 @@
+<div class="form-area pt-3 pb-4">
+  <div class="form-tab">
+    <ul class="nav form-tab-menu text-left" id="myTab" role="tablist">
+      <li>
+        <a class="active show" id="personal-info-tab" data-toggle="tab"
+           href="#personal-info" role="tab" aria-controls="personal-info"
+           aria-selected="true">Personal Info</a>
+      </li>
+      <li>
+        <a id="avater-tab" data-toggle="tab" href="#avater" role="tab"
+           aria-controls="avater" aria-selected="false">Avatar</a>
+      </li>
+      <li>
+        <a id="change-password-tab" data-toggle="tab" href="#change-password" role="tab"
+           aria-controls="change-password" aria-selected="false">Password</a>
+      </li>
+      <li>
+        <a id="verification-tab" data-toggle="tab" href="#verification" role="tab"
+           aria-controls="verification" aria-selected="false">Verification</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade active show" id="personal-info" role="tabpanel"
+           aria-labelledby="personal-info-tab">
+        <div class="tab-header mb-3">
+          <p>You can modify your contact below</p>
+        </div>
+
+        <%= form_with(model: @user, local: true) do |form| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text rounded-0 input-title">Username</div>
+              </div>
+              <%= form.text_field :username, class: "form-control", placeholder: "username"%>
+            </div>
+          </div>
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend ">
+                <div class="input-group-text rounded-0 input-title">Email</div>
+              </div>
+              <%= form.email_field :email, class: "form-control", placeholder: "email"%>
+            </div>
+          </div>
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend ">
+                <div class="input-group-text rounded-0 input-title">Mobile</div>
+              </div>
+              <%= form.text_field :mobile, class: "form-control", placeholder: "mobile"%>
+            </div>
+          </div>
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend ">
+                <div class="input-group-text rounded-0 input-title">City</div>
+              </div>
+              <%= form.text_field :city, class: "form-control", placeholder: "city"%>
+            </div>
+          </div>
+          <div class="col-sm-12 m-0 p-0">
+            <div class="text-area">
+              <div class="text-area-header">
+                <p>Personal Introduction</p>
+              </div>
+              <div class="text-area-body">
+                <%= form.text_area :personal_information, class: "form-control", rows: 5, placeholder: "Leave Your Personal Bio Here"%>
+              </div>
+            </div>
+          </div>
+          <div class="submit-btn mt-4">
+            <button type="submit" class="btn rounded-0" style="background: #40888a; color: white; width: 100px;">Confirm</button>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="avater" role="tabpanel" aria-labelledby="avater-tab">
+        <%= form_for @user, html: { multipart: true, class: "pt-3" } do |f| %>
+
+          <div class="col-sm-6 m-0 p-0">
+
+            <label for="user_avater" class="custom-file-upload">
+              <span> <i class="fas fa-cloud-upload-alt"></i> Gravatar</span> no large
+              then 2mb
+            </label>
+            <!--<input id="file-upload" type="file" />-->
+            <%= f.file_field :avater %>
+          </div>
+          <img src="<%= @user.avater_url if @user.avater_url.present?%>" id="preview", class="rounded-circle", style="width: 220px; padding: 15px 0 0px 15px;" />
+          <div class="submit-btn mt-4">
+            <button type="submit" class="btn rounded-0"
+                    style="background: #40888a; color: white; width: 100px;">Confirm</button>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- change password tab -->
+      <div class="tab-pane fade" id="change-password" role="tabpanel"
+           aria-labelledby="change-password-tab">
+
+        <%= form_for @user, html: { multipart: true, class: "pt-3" } do |f| %>
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend ">
+                <div class="input-group-text rounded-0 input-title">new</div>
+              </div>
+              <%= f.password_field :password, class:"form-control",id: "new-password", placeholder: "new password" %>
+
+            </div>
+          </div>
+
+          <div class="col-sm-5 m-0 p-0">
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend ">
+                <div class="input-group-text rounded-0 input-title">confirm</div>
+              </div>
+              <%= f.password_field :password_confirmation, class:"form-control",id:"confirm password", placeholder: "please confirm new password" %>
+
+            </div>
+          </div>
+
+          <div class="submit-btn mt-4">
+            <button type="submit" class="btn rounded-0"
+                    style="background: #40888a; color: white; width: 100px;">Confirm</button>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="verification" role="tabpanel" aria-labelledby="verification-tab">
+        <%= form_for @user, html: { multipart: true, class: "pt-3" } do |f| %>
+
+            <div class="col-sm-5 m-0 p-0">
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend ">
+                  <div class="input-group-text rounded-0 input-title">Type of Card</div>
+                </div>
+                <%= f.text_field :type_of_card, class:"form-control", placeholder: "Please enter your full name" %>
+
+              </div>
+            </div>
+
+            <div class="col-sm-5 m-0 p-0">
+              <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend ">
+                  <div class="input-group-text rounded-0 input-title">Card Number</div>
+                </div>
+                <%= f.text_field :card_number, class:"form-control", placeholder: "Please enter your student number" %>
+
+              </div>
+            </div>
+
+            <div class="col-sm-6 m-0 p-0 pt-3">
+              <label for="user_id_card" class="custom-file-upload">
+                <span> <i class="fas fa-cloud-upload-alt"></i> Gravatar</span> no large
+                then 2mb
+              </label>
+              <%= f.file_field :id_card %>
+            </div>
+            <img src="<%= @user.id_card_url if @user.avater_url.present?%>" id="id_card_preview" style="width: 450px" />
+
+            <div class="submit-btn mt-4">
+              <button type="submit" class="btn rounded-0" style="background: #40888a; color: white; width: 100px;">Confirm</button>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

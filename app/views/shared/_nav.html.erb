@@ -1,0 +1,79 @@
+<div class="nav-head">
+  <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark pl-5 pr-5">
+    <div class="col-sm-3">
+      <a class="navbar-brand" href="/">News+</a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="col-sm-9">
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home<%= render 'shared/active_nav_class' if current_page?(root_path) %></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              News
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% Blog::TOPICS.each do |topic|%>
+                  <!--<a class="dropdown-item" href="#">-->
+                  <%= link_to topic, blogs_path(keyword: topic), class: "dropdown-item" %>
+                  <!--</a>-->
+              <% end %>
+            </div>
+          </li>
+          <% if signed_in? %>
+              <li class="nav-item">
+                <% if current_user.username.present?%>
+                    <a class="nav-link" href="/users/my_profile">
+                      <%= current_user.username %>
+                      <%= render 'shared/active_nav_class' if current_page?(my_profile_users_path) %>
+                    </a>
+                    <% else %>
+                    <a class="nav-link" href="/users/settings">
+                      Set username
+                      <%= render 'shared/active_nav_class' if current_page?(my_profile_users_path) %>
+                    </a>
+                <% end %>
+              </li>
+          <% end %>
+        </ul>
+
+        <% if signed_in? %>
+            <ul class="navbar-nav float-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-0 profile" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag user_avater(current_user), class: "rounded-circle avatar", alt: "Cinque Terre" %>
+                </a>
+                <div class="dropdown-menu profile-nav" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/users/my_profile">View Profile</a>
+                  <a class="dropdown-item" href="/users/settings">Edit Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to 'Log Out', logout_path, method: :delete, class: "dropdown-item" %>
+                </div>
+              </li>
+            </ul>
+        <% else %>
+            <ul class="navbar-nav float-right">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle p-0 profile" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag 'avater.png', class: "rounded avatar", alt: "Cinque Terre" %>
+                </a>
+                <div class="dropdown-menu profile-nav" aria-labelledby="navbarDropdown">
+                  <%= link_to 'Log in', login_path, class: "dropdown-item" %>
+                </div>
+              </li>
+            </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</div>
